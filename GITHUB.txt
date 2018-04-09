@@ -1,0 +1,111 @@
+GIT
+====
+git config --global user.name neilm
+git config --global user.email kern@neilmutch.com
+
+
+//Create Git repo:
+//Copy the whole path of directory and paste in CMD to be in the root of that directory.
+CMD = git init  //it's now a Git repo - new files are in green
+
+//Staging Area:
+CMD = git status  //unstaged files are in red
+//Add file to staging area:
+CMD = git add file.html   //staged files are in green
+//Remove file.html from staging area:
+CDM = git rm --cached file.html  //unstaged files are in red again
+//Add all files to staging area
+CMD = git add .
+
+Commit:
+CMD = git commit -m "Very descriptive message"
+//(if you see the on screen message 1 insertion, 1 deletion - it's Git's way of showing a modified line)
+
+//Log of changes:
+CMD = git log  //all changes shown with commit id
+CMD = git log --oneline  //brief view shows messages
+
+//Rollback:  https://www.youtube.com/watch?v=RIYrfkZjWmA
+//Checkout goes back to a previous commit using unique commit id (i.e. af6b84c) 
+CMD = git checkout af6b84c   //rolls back read only
+
+CMD = git checkout master  //Takes you back to the top of current status
+//Make DIR on Github 
+
+//Revert goes back to a previous commit using unique commit id (i.e. af6b84c) 
+CMD = git revert af6b84c   //rolls back change and adds it to the top of current status so it can be added again.
+//Text editor will be asking for a description for the Revert
+CMD = SHIFT + :wq   //to escape editor
+
+//Reset deletes from a previous commit using unique commit id (i.e. af6b84c) 
+CMD = git reset af6b84c   //removes but still has them
+CMD = git reset af6b84c --hard  //removes and deletes forever
+
+//Branch:       https://www.youtube.com/watch?v=QV0kVNvkMxc
+CMD = git branch titleofbranch-1   //Make a new branch
+CMD = git branch -a   //List branches  (still in *master)
+CMD = git checkout   //Switch to *titleofbranch-1
+CMD = git checkout -b branch2  //Creates branch and checks it out, so *branch2
+(CMD = git checkout master   //takes you to the master branch)
+
+//Add file to branch:
+git status
+git add .    //Adds to staging
+git commit -m "Added new feature"  //Committed to the branch *titleofbranch-1
+
+CMD = git branch -d titleofbranch-1  //Delete branch *titleofbranch-1
+//(Only works if merged)
+CMD = git branch -D titleofbranch-1  //Delete branch *titleofbranch-1
+//(Note "D" which deletes regardless)
+
+//Merge branch     //https://www.youtube.com/watch?v=XX-Kct0PfFc
+//You MUST be in the branch you want to merge into!
+CMD = git merge titleofbranch-1
+//Dealing with conflict
+<<<<<<<<<<HEAD
+//If conflict shown,
+========
+//alter until satisfied agreed result.
+>>>>>>>>>feature-c
+CMD = git .
+CMD = git commit   //no message but text editor opens up 
+CMD = SHIFT :wq ENTER
+CDM = git log --oneline   //See the change
+
+GIT COMMANDS
+=============
+https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
+git log --pretty=format:"%h %s" --graph
+$ git log --since=2.weeks
+
+
+
+GITHUB
+https://www.youtube.com/watch?v=fQLK8Ib_SKk
+======
+//Go to directory you want repository i.e. cd xampp\htdocs\php
+CMD = cd xampp\htdocs\php
+//clone directory onto pc into new uofm folder at xampp\htdocs\php\uofm
+CMD = git clone https://github.com/neilstoys/uofm.git
+
+//Put all your files into uofm folder
+//Go to folder in CMD
+CMD = git status
+
+//All untracked files show in red
+CMD = git add . //(see period)
+
+CMD = git commit -m"Your tip message here"
+
+
+CMD = git push origin master
+
+
+
+COLLABERATOR
+============
+Originator creates Repo then in Settings/Collaberators types and adds a collaberator for Repo
+Collaberator recieves email where accept/decline invite
+Collaberator can then clone Repo
+
+https://github.com/KernKreative/TestAdmin.git
